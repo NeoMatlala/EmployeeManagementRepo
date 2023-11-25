@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagement.Models
 {
@@ -14,9 +15,11 @@ namespace EmployeeManagement.Models
         public string Surname { get; set; }
 
         [Required]
+        [DisplayName("ID Number")]
         public double IDNumber { get; set; }
 
         [Required]
+        [DisplayName("Job Title")]
         public string JobTitle { get; set; }
 
         [Required]
