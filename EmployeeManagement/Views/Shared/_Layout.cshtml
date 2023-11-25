@@ -4,26 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EmployeeManagement</title>
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
-    @*<link rel="stylesheet" href="~/EmployeeManagement.styles.css" asp-append-version="true" />*@
 </head>
 <body class="bg-gray-100">
-    <partial name="Navbar" />
-    <div class="container">
-        <main role="main" class="pb-3 min-h-[80vh] max-w-7xl mx-auto">
+    <partial name="Navbar"/>
+
+    <div class="container max-w-7xl mx-auto">
+        <main role="main" class="pb-3 min-h-[80vh]">
             @RenderBody()
         </main>
     </div>
-    <partial name="Footer" />
 
-    @*<footer class="border-top bg-white footer text-muted">
-        <div class="container">
-            &copy; 2023 - EmployeeManagement - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>*@
+    <partial name="Footer" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
