@@ -41,7 +41,7 @@ namespace EmployeeManagement.Controllers
             return View(obj);
         }
 
-        // Update
+        // UPDATE
         public IActionResult Update(int? id)
         {
             if(id == null || id== 0)
@@ -63,6 +63,34 @@ namespace EmployeeManagement.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
+        }
+
+        //DELETE
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id== 0)
+            {
+                return NotFound();
+            }
+
+            var employee = _db.Employees.Find(id);
+
+            return View(employee);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteEmployee(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var employee = _db.Employees.Find(id);
+            _db.Employees.Remove(employee);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
