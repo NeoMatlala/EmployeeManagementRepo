@@ -57,7 +57,7 @@
                         </td>
                         <td class="px-6 py-4 flex justify-start items-center gap-5">
                                 <a asp-controller="Employee" asp-action="Update" asp-route-id="@obj.ID" class="font-medium text-blue-600 hover:underline">Edit</a>
-                            <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
+                            <a asp-controller="Employee" asp-action="Delete" asp-route-id="@obj.ID" class="font-medium text-red-600 hover:underline">Delete</a>
                         </td>
                     </tr>
                 }
