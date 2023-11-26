@@ -63,5 +63,29 @@ namespace EmployeeManagement.Controllers
 
             return View(obj);
         }
+
+        // DELETE
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var department = _db.Departments.Find(id);
+            return View(department);
+        }
+
+        public IActionResult DeleteDepartment(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var department = _db.Departments.Find(id);
+            _db.Departments.Remove(department);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
