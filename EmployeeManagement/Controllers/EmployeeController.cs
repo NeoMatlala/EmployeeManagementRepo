@@ -40,5 +40,29 @@ namespace EmployeeManagement.Controllers
             }
             return View(obj);
         }
+
+        // Update
+        public IActionResult Update(int? id)
+        {
+            if(id == null || id== 0)
+            {
+                return NotFound();
+            }
+            var employee = _db.Employees.Find(id);
+            return View(employee);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Employee obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Employees.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
     }
 }
