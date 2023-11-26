@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Data;
+using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Controllers
@@ -18,5 +19,25 @@ namespace EmployeeManagement.Controllers
             var departments = _db.Departments.ToList();
             return View(departments);
         }
+
+        // CREATE
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Department obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Departments.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
     }
 }
