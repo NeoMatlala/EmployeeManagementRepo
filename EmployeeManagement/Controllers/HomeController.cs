@@ -20,6 +20,7 @@ namespace EmployeeManagement.Controllers
         public IActionResult Index()
         {
             ViewData["employeeCount"] = _db.Employees.Count();
+            ViewData["departmentCount"] = _db.Departments.Count();
 
             return View();
         }
