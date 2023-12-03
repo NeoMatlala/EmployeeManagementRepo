@@ -1,6 +1,9 @@
 ﻿using EmployeeManagement.Data;
 using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace EmployeeManagement.Controllers
@@ -21,6 +24,9 @@ namespace EmployeeManagement.Controllers
         {
             ViewData["employeeCount"] = _db.Employees.Count();
             ViewData["departmentCount"] = _db.Departments.Count();
+
+
+            
 
             return View();
         }

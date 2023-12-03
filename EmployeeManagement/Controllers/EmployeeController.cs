@@ -1,6 +1,9 @@
 ﻿using EmployeeManagement.Data;
 using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement.Controllers
 {
@@ -18,6 +21,15 @@ namespace EmployeeManagement.Controllers
         public IActionResult Index()
         {
             var employeeList = _db.Employees.ToList();
+            List<int> employeeIds = employeeList.Select(employee => employee.ID).ToList();
+
+            var employees = _db.Departments
+            .Where(e => employeeIds.Contains(e.ID)) // Replace EmployeeId with your actual property name
+            .Select(e => e.DepartmentName)
+            .ToList();
+
+
+            ViewData["employeeIds"] = "Neo";
 
             return View(employeeList);
         }
@@ -25,20 +37,46 @@ namespace EmployeeManagement.Controllers
         // CREATE
         public IActionResult Create()
         {
-            return View();
+            var viewModel = new DepartmentEmployeeViewModel();
+
+            viewModel.Departments = _db.Departments.ToList();
+
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Employee obj)
+        public IActionResult Create(DepartmentEmployeeViewModel viewModel)
         {
-            if(ModelState.IsValid)
+            viewModel.Departments = _db.Departments.ToList();
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(viewModel);
+            //}
+
+            var newEmployee = new Employee
             {
-                _db.Employees.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(obj);
+                Name = viewModel.Name,
+                Surname = viewModel.Surname,
+                JobTitle = viewModel.JobTitle,
+                IDNumber = viewModel.IDNumber,
+                DepartmentId = viewModel.DepartmentId,
+                DepartmentName = _db.Departments
+                .Where(e => e.ID == viewModel.DepartmentId) // Replace EmployeeId with your actual property name
+                .Select(e => e.DepartmentName)
+                .FirstOrDefault(),
+            };
+
+            //var departmentName = _db.Departments
+            //.Where(e => e.ID == newEmployee.DepartmentId) // Replace EmployeeId with your actual property name
+            //.Select(e => e.DepartmentName)
+            //.FirstOrDefault();
+
+            _db.Employees.Add(newEmployee);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // UPDATE
