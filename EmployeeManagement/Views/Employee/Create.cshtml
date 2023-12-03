@@ -1,13 +1,13 @@
-﻿@model Employee;
+﻿@using EmployeeManagement.ViewModels
+@model DepartmentEmployeeViewModel
+
 @{
     ViewData["Title"] = "Create Employee";
 }
 
 <div class="mt-10">
     <h1 class="text-4xl font-medium">Create Employees</h1>
-
-
-    <form class="bg-white p-5 mt-8" method="post">
+    <form class="bg-white p-5 mt-8" asp-action="Create" asp-controller="Employee" method="post">
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
                 <label asp-for="Name" class="block mb-2 text-sm font-medium text-gray-900"></label>
@@ -30,25 +30,52 @@
                 <span asp-validation-for="JobTitle" class="text-sm text-red-700"></span>
             </div>
             <div>
-                <label asp-for="Department" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <select asp-for="Department" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-5">
-                    <option value="0" selected>Choose a department</option>
-                    <option value="Sales">Sales</option>
-                    <option value="IT Department">IT Department</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Compliance">Compliance</option>
+                <label asp-for="DepartmentId" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                
+                <select asp-for="DepartmentId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option value="">Select Department</option>
+                    @foreach (var department in Model.Departments)
+                    {
+                        <option value="@department.ID">@department.DepartmentName</option>
+                    }
                 </select>
-                <span asp-validation-for="Department" class="text-sm text-red-700"></span>
+                
+                <span asp-validation-for="DepartmentId" class="text-sm text-red-700"></span>
             </div>
+            
         </div>
         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+        
+
+    
     </form>
 
 
 </div>
 
+
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial"/>
     }
+
+    @*<script>
+        console.log("Neo")
+        // Add script to handle dropdown change event
+        document.getElementById('SelectedDepartmentId ').addEventListener('change', function () {
+            var selectedDepartmentId = this.value;
+            // You can make an AJAX call here to get the display value based on the selected department id
+            // Update the #displayValue span with the result
+            // For simplicity, let's assume you have a JavaScript function called updateDisplayValue
+            updateDisplayValue(selectedDepartmentId);
+        });
+
+        // Function to update the display value (replace this with your logic)
+        function updateDisplayValue(selectedDepartmentId) {
+            // Example: Assume you have a list of departments in the model
+            var department = model.Departments.find(d => d.value === selectedDepartmentId);
+            document.getElementById('displayValue').innerText = department ? department.text : '';
+        }
+    </script>*@
+
 }
