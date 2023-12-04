@@ -1,5 +1,5 @@
 ﻿@using EmployeeManagement.ViewModels
-@model DepartmentEmployeeViewModel
+@model DepartmentEmployeeCreateViewModel
 
 @{
     ViewData["Title"] = "Create Employee";
@@ -10,29 +10,29 @@
     <form class="bg-white p-5 mt-8" asp-action="Create" asp-controller="Employee" method="post">
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
-                <label asp-for="Name" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <input asp-for="Name" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John">
-                <span asp-validation-for="Name" class="text-sm text-red-700"></span>
+                <label asp-for="Employee.Name" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <input asp-for="Employee.Name" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John">
+                <span asp-validation-for="Employee.Name" class="text-sm text-red-700"></span>
             </div>
             <div>
-                <label asp-for="Surname" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <input asp-for="Surname"  type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Doe">
-                <span asp-validation-for="Surname" class="text-sm text-red-700"></span>
+                <label asp-for="Employee.Surname" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <input asp-for="Employee.Surname" type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Doe">
+                <span asp-validation-for="Employee.Surname" class="text-sm text-red-700"></span>
             </div>
             <div>
-                <label asp-for="IDNumber" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <input asp-for="IDNumber" type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="7854125236988">
-                <span asp-validation-for="IDNumber" class="text-sm text-red-700"></span>
+                <label asp-for="Employee.IDNumber" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <input asp-for="Employee.IDNumber" type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="7854125236988">
+                <span asp-validation-for="Employee.IDNumber" class="text-sm text-red-700"></span>
             </div>
             <div>
-                <label asp-for="JobTitle" class="block mb-2 text-sm font-medium text-gray-90"></label>
-                <input asp-for="JobTitle" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Senior Software Engineer">
-                <span asp-validation-for="JobTitle" class="text-sm text-red-700"></span>
+                <label asp-for="Employee.JobTitle" class="block mb-2 text-sm font-medium text-gray-90"></label>
+                <input asp-for="Employee.JobTitle" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Senior Software Engineer">
+                <span asp-validation-for="Employee.JobTitle" class="text-sm text-red-700"></span>
             </div>
             <div>
-                <label asp-for="DepartmentId" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <label asp-for="Employee.DepartmentId" class="block mb-2 text-sm font-medium text-gray-900"></label>
                 
-                <select asp-for="DepartmentId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <select asp-for="Employee.DepartmentId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     <option value="">Select Department</option>
                     @foreach (var department in Model.Departments)
                     {
@@ -40,7 +40,7 @@
                     }
                 </select>
                 
-                <span asp-validation-for="DepartmentId" class="text-sm text-red-700"></span>
+                <span asp-validation-for="Employee.DepartmentId" class="text-sm text-red-700"></span>
             </div>
             
         </div>
@@ -58,24 +58,7 @@
     @{
         <partial name="_ValidationScriptsPartial"/>
     }
-
-    @*<script>
-        console.log("Neo")
-        // Add script to handle dropdown change event
-        document.getElementById('SelectedDepartmentId ').addEventListener('change', function () {
-            var selectedDepartmentId = this.value;
-            // You can make an AJAX call here to get the display value based on the selected department id
-            // Update the #displayValue span with the result
-            // For simplicity, let's assume you have a JavaScript function called updateDisplayValue
-            updateDisplayValue(selectedDepartmentId);
-        });
-
-        // Function to update the display value (replace this with your logic)
-        function updateDisplayValue(selectedDepartmentId) {
-            // Example: Assume you have a list of departments in the model
-            var department = model.Departments.find(d => d.value === selectedDepartmentId);
-            document.getElementById('displayValue').innerText = department ? department.text : '';
-        }
-    </script>*@
-
 }
+
+    
+

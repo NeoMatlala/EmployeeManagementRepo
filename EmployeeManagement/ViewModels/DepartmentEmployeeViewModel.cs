@@ -7,23 +7,26 @@ namespace EmployeeManagement.ViewModels
 {
     public class DepartmentEmployeeViewModel
     {
-        //public Employee Employees {get; set;}
-        
-        public string Name { get; set; }
+        public List<Employee> Employees {get; set;}
+        //public Employee Employee { get; set; }
 
-        public string Surname { get; set; }
+        //public string Name { get; set; }
 
-        
-        [DisplayName("ID Number")]
-        public double IDNumber { get; set; }
+        //public string Surname { get; set; }
 
-        
-        [DisplayName("Job Title")]
-        public string JobTitle { get; set; }
 
-        // FK
-        [DisplayName("Department")]
-        public int DepartmentId { get; set; }
+        //[DisplayName("ID Number")]
+        //public double IDNumber { get; set; }
+
+
+        //[DisplayName("Job Title")]
+        //public string JobTitle { get; set; }
+
+        //// FK
+        //[DisplayName("Department")]
+        //public int DepartmentId { get; set; }
+
+        //public string DepartmentName { get; set; }
 
         public List<Department> Departments { get; set; }
     }

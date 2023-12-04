@@ -21,8 +21,10 @@ namespace EmployeeManagement.Models
         public string JobTitle { get; set; }
 
         // FK
-        public int DepartmentId { get; set; } 
+        [DisplayName("Department Name")]
+        public int DepartmentId { get; set; }
 
+        [DisplayName("Department Name")]
         public string DepartmentName { get; set; }
 
         // navigation property
