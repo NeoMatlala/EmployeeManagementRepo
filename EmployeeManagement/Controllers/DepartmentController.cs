@@ -58,14 +58,10 @@ namespace EmployeeManagement.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(Department obj)
         {
-            if (ModelState.IsValid)
-            {
-                _db.Departments.Update(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(obj);
+            _db.Departments.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // DELETE
