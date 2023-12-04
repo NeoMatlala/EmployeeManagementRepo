@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Employee>;
+﻿@*@model IEnumerable<Employee>;*@
+@using EmployeeManagement.ViewModels
+@model DepartmentEmployeeViewModel;
 @{
     ViewData["Title"] = "Home Page";
 
@@ -37,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(var obj in Model)
+                @foreach(var obj in Model.Employees)
                 {
                     <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -56,7 +58,7 @@
                             @obj.DepartmentName
                         </td>
                         <td class="px-6 py-4 flex justify-start items-center gap-5">
-                                <a asp-controller="Employee" asp-action="Update" asp-route-id="@obj.ID" class="font-medium text-blue-600 hover:underline">Edit</a>
+                            <a asp-controller="Employee" asp-action="Update" asp-route-id="@obj.ID" class="font-medium text-blue-600 hover:underline">Edit</a>
                             <a asp-controller="Employee" asp-action="Delete" asp-route-id="@obj.ID" class="font-medium text-red-600 hover:underline">Delete</a>
                         </td>
                     </tr>

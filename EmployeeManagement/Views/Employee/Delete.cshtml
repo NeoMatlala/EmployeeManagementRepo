@@ -1,4 +1,5 @@
-﻿@model Employee;
+﻿@using EmployeeManagement.ViewModels
+@model DepartmentEmployeeCreateViewModel;
 @{
     ViewData["Title"] = "Update Employee";
 }
@@ -6,34 +7,34 @@
 <div class="mt-10">
     <h1 class="text-4xl font-medium">Delete Employee</h1>
 
-    @*<form class="bg-white p-5 mt-8" method="post" asp-action="DeleteEmployee">
-        <input hidden asp-for="ID">
+    <form class="bg-white p-5 mt-8" method="post" asp-action="DeleteEmployee">
+        <input hidden asp-for="Employee.ID">
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
-                <label asp-for="Name" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <input disabled asp-for="Name" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <label asp-for="Employee.Name" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <input disabled asp-for="Employee.Name" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
             <div>
-                <label asp-for="Surname" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <input disabled asp-for="Surname" type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <label asp-for="Employee.Surname" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <input disabled asp-for="Employee.Surname" type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 
             </div>
             <div>
-                <label asp-for="IDNumber" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <input disabled asp-for="IDNumber" type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <label asp-for="Employee.IDNumber" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <input disabled asp-for="Employee.IDNumber" type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
             <div>
-                <label asp-for="JobTitle" class="block mb-2 text-sm font-medium text-gray-90"></label>
-                <input disabled asp-for="JobTitle" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <label asp-for="Employee.JobTitle" class="block mb-2 text-sm font-medium text-gray-90"></label>
+                <input disabled asp-for="Employee.JobTitle" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
             <div>
-                <label asp-for="Department" class="block mb-2 text-sm font-medium text-gray-900"></label>
-                <input disabled asp-for="Department" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <label asp-for="Employee.DepartmentName" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                <input disabled asp-for="Employee.DepartmentName" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
         </div>
         <div class="flex justify-end items-center gap-1">
             <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Delete Employee</button>
             <a asp-controller="Employee" asp-action="Index" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Cancel</a>
         </div>
-    </form>*@
+    </form>
 </div>
