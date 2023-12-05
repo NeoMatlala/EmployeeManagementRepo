@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Data;
 using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Controllers
@@ -17,7 +18,28 @@ namespace EmployeeManagement.Controllers
         public IActionResult Index()
         {
             var departments = _db.Departments.ToList();
-            return View(departments);
+            var departmentIds = _db.Departments.Select(d => d.ID).ToList();
+
+            var departmentData = new List<DepartmentData>();
+
+            foreach(var departmentId in departmentIds)
+            {
+                var department = _db.Departments.Find(departmentId);
+                int employeeCount = _db.Employees.Count(e => e.DepartmentId == departmentId);
+
+                department.Members = employeeCount;
+
+                // Add department information and employee count to the list
+                departmentData.Add(new DepartmentData
+                {
+                    Department = department,
+                    EmployeeCount = employeeCount
+                });
+            }
+
+            _db.SaveChanges();
+
+            return View(departmentData);
         }
 
         // CREATE
