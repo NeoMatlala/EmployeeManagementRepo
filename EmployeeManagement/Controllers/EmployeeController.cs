@@ -24,7 +24,6 @@ namespace EmployeeManagement.Controllers
             var viewModel = new DepartmentEmployeeViewModel();
             viewModel.Employees = _db.Employees.ToList();
 
-
             return View(viewModel);
         }
 
@@ -63,6 +62,8 @@ namespace EmployeeManagement.Controllers
 
             return RedirectToAction("Index");
         }
+
+
 
         // UPDATE
         public IActionResult Update(int? id)
